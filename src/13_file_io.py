@@ -10,6 +10,20 @@ https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
 # Note: pay close attention to your current directory when trying to open "foo.txt"
 
 # YOUR CODE HERE
+def readFile(x):
+    #open file with read flag
+    file = open(x, 'r')
+
+    #read lines in file and loop
+    for line in file.readlines():
+        #print out each line
+        print(line)
+
+    #close file
+    file.close()
+
+#call func
+readFile('foo.txt')
 
 # Open up a file called "bar.txt" (which doesn't exist yet) for
 # writing. Write three lines of arbitrary content to that file,
@@ -17,3 +31,12 @@ https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
 # sure that it contains what you expect it to contain
 
 # YOUR CODE HERE
+def createFile(file, lines):
+    newFile = open(file, 'w+')
+    newFile.writelines(lines);
+    newFile.close()
+
+myLines = ["This is bar.txt \n", "Hello, world! \n", "My name is Corey Gumbs. \n", "I like coding. \n"]
+
+createFile('bar.txt', myLines)
+readFile('bar.txt');
