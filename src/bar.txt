@@ -1,0 +1,4 @@
+This is bar.txt 
+Hello, world! 
+My name is Corey Gumbs. 
+I like coding. 

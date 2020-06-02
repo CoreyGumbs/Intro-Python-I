@@ -29,4 +29,43 @@ it should use today’s date to get the month and year.
 
 import sys
 import calendar
-from datetime import datetime
+from datetime import date
+
+#gets date (month, year or both) from command line args
+selectDate = sys.argv[1:]
+#sets today's date
+today = date.today()
+
+#self-exectuting function
+def newCalendar(*args):
+      #if *args has no input
+      if not args:
+            #print usage message for proper arguments needed
+            print("\n Please enter a valid month and year! Ex: python 14_cal.py 3 2020 \n")
+          
+            #returns calendar of the current month of the current year
+            return calendar.month(today.year, today.month, 3, 1)
+      #check if only one argument passed
+      elif len(args) == 1:
+            #assign first argument to var
+            month = args[0]
+            #test if month given is within range of 1-12
+            if int(month) in range(1, 13):
+                  #returns calendar with of given month in current year
+                  return calendar.month(today.year, int(month), 3, 1)
+            else:
+                  #if out of range - returns a message to enter valid arguments
+                  print("\n Please enter a valid month and year! Ex: python 14_cal.py 3 2020 \n")
+                  #exits the program
+                  sys.exit()  
+      #check if two args passed           
+      elif len(args) == 2:
+            #assign first arg to month
+            month= args[0]
+            #assign second arg to year
+            year= args[1]
+            #return calendar of given month & year
+            return calendar.month(int(year), int(month), 3, 1)
+
+if __name__ == "__main__":
+  print(newCalendar(*selectDate))
